@@ -1,0 +1,42 @@
+Server: Debian VPS (Windows or Linux only) - DigitalOcean
+Domain: wahtever.com - Namecheap
+
+DigitalOcean Droplet 
+Debian based, recommended
+$5 (1RAM is good)
+
+One Droplet per phishlet
+
+CNAME Record - (www.wahtever.com) Edit and add domain and VPS IP
+A Record - (wahtever.com) Edit and add domain and VPS IP
+
+Custom Hostname, for new users
+
+----
+
+og_title
+og_desc
+og_image
+og_url
+
+og_ means Open Graph for previes on Social Media
+
+----
+
+Use Blackist to create a scanner of IPs
+Like you just wait and periodically check blacklist.txt
+
+
+----
+
+Create Phishlet
+Create Lure for the phishlet
+Proxy the Lure with another proxy server/socks
+Cloudflare protection/validation 
+Redirection
+
+----
+
+Buy USA Server (that is closer to the spammed leads)
+Because when user receives a 2fa code on their phone, ther server can know that it's from same country
+

