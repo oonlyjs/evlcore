@@ -2,17 +2,17 @@
 apt-get update && apt-get install make git
 git clone https://github.com/oonlyjs/evlcore.git evlcore-src
 mkdir evlcore
+mkdir /usr/local/evlcore
 cd evlcore-src
 tar -C /usr/local -xzf go1.22.4.linux-amd64.tar.gz
 printf "\nexport PATH=$PATH:/usr/local/go/bin\n" >> ~/.profile
 go version
 make && cd ../evlcore
 mkdir bin
-mkdir /usr/local/evlcore
 cp ~/evlcore-src/build/evilginx ./bin
+cp -r ~/evlcore-src/app .
 cp -r ~/evlcore-src/phishlets .
 cp -r ~/evlcore-src/redirectors .
-cp -r ./bin /usr/local/evlcore/bin
 cp -r . /usr/local/evlcore
 printf "\nexport PATH=$PATH:/usr/local/evlcore/bin\n" >> ~/.profile
 evilginx -p ./phishlets/
